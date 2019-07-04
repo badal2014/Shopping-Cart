@@ -1,0 +1,98 @@
+@import './helper.scss';
+// @import './reset';
+
+//Variables
+$blueColor : #6d6dc9;
+
+//@ mixins 
+@mixin font-style($fontSize , $fontWeight , $textAlign) {
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: #4a4a4a;
+    font-family: Montserrat;
+    text-align: $textAlign;
+}
+
+%button {
+    background: transparent;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+//pseudo-element
+    &:hover{
+        background: $blueColor;  //Use Variable 
+        border-color: $blueColor;
+        color: #fff;
+        transition: 0.5s;
+    }
+} 
+.shoppingCart{
+    .header{
+        height: 20vh;
+    }
+}
+.products{
+    img{
+        width:100%;
+    }
+    .particularProduct{
+        text-align: center;         
+        h4{
+//-----How to Use Mixins ------
+            @include font-style(17px , 500 , center);
+        }
+        h5{
+            @include font-style(14px , 400 ,center);
+        }
+        button{
+            @extend %button;
+            @include font-style(12px,500 ,inherit );
+            padding: 4px 15px;
+        }
+        .productDescription{
+            height: 17vh;
+            vertical-align: middle;
+            display: table-cell;
+        }
+        height: 62vh;
+    }
+    .productImgBox{
+        height: 43vh;
+    }
+}
+.cartItems{
+    position: absolute;
+    top: 0;
+    background: #fff;
+}
+.filters{
+    input[type=checkbox]{
+        position: relative;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .checkBoxMain{
+        display: inline-block;
+        left: 0;
+        width: 36px;
+        margin-bottom: 28px;
+        float: left;
+        padding-right: 47px;
+    }
+    .checkmark{
+        position: absolute;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        font-size: .8em;
+        border-radius: 50%;
+        line-height: 35px;
+        text-align: center;
+        color: #1b1a20;
+        background-color: #ececec;
+        border: 1px solid transparent;
+    }
+    input[type=checkbox]:checked~.checkmark{
+        background-color: #1b1a20;
+        color: #ececec;
+    }
+}
